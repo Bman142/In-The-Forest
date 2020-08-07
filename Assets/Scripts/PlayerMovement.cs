@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     private NavMeshAgent agent;
     private float walkSpeed;
     private float sprintSpeed;
+    private Rigidbody rb;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
         agent = this.GetComponent<NavMeshAgent>();
         walkSpeed = this.GetComponent<Player>().walkSpeed;
         sprintSpeed = this.GetComponent<Player>().sprintSpeed;
+        rb = this.GetComponent<Rigidbody>();
 
         switch (controls)
         {
@@ -65,10 +67,16 @@ public class PlayerMovement : MonoBehaviour
         //Keyboard Movement (Forward and Backwards, Strafeing)
         float movementSpeed = walkSpeed;
         if (Input.GetKey(sprint)) { movementSpeed = sprintSpeed; }
+        
         if (Input.GetKey(forward)) { agent.Move(this.transform.forward * movementSpeed); }
         if (Input.GetKey(backward)) { agent.Move(this.transform.forward * -movementSpeed); }
         if (Input.GetKey(left)) { agent.Move(this.transform.right * -movementSpeed); }
         if (Input.GetKey(right)) { agent.Move(this.transform.right * movementSpeed); }
-        
+        /*
+        if (Input.GetKey(forward)) { this.transform.position += this.transform.forward * movementSpeed * Time.deltaTime; }
+        if (Input.GetKey(backward)) { this.transform.position -= this.transform.forward * movementSpeed * Time.deltaTime; }
+        if (Input.GetKey(left)) { this.transform.position -= this.transform.right * movementSpeed * Time.deltaTime; }
+        if (Input.GetKey(right)) { this.transform.position += this.transform.right * movementSpeed * Time.deltaTime; }
+        */
     }
 }
