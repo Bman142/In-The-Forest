@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -22,7 +23,8 @@ public class PlayerMovement : MonoBehaviour
     private NavMeshAgent agent;
     private float walkSpeed;
     private float sprintSpeed;
-    private Rigidbody rb;
+
+    public bool inMenu = false;
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +34,6 @@ public class PlayerMovement : MonoBehaviour
         agent = this.GetComponent<NavMeshAgent>();
         walkSpeed = this.GetComponent<Player>().walkSpeed;
         sprintSpeed = this.GetComponent<Player>().sprintSpeed;
-        rb = this.GetComponent<Rigidbody>();
 
         switch (controls)
         {
@@ -60,10 +61,13 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         //Mouse Movement (Left to Right)
-        Vector2 mouseChange = new Vector2(Input.GetAxisRaw("Mouse X"), -Input.GetAxisRaw("Mouse Y"));
-        mouseDirection += mouseChange;
-        this.transform.localRotation = Quaternion.AngleAxis(mouseDirection.x * cameraSensitivity, Vector3.up);
-
+        if (!inMenu)
+        {
+            Vector2 mouseChange = new Vector2(Input.GetAxisRaw("Mouse X"), -Input.GetAxisRaw("Mouse Y"));
+            mouseDirection += mouseChange;
+            this.transform.localRotation = Quaternion.AngleAxis(mouseDirection.x * cameraSensitivity, Vector3.up);
+        }
+        
         //Keyboard Movement (Forward and Backwards, Strafeing)
         float movementSpeed = walkSpeed;
         if (Input.GetKey(sprint)) { movementSpeed = sprintSpeed; }
