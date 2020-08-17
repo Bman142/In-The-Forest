@@ -8,7 +8,7 @@ public class InGameMenu : MonoBehaviour
 {
     public Canvas canvas;
     public PlayerMovement player;
-    public CameraControl camera;
+    public new CameraControl camera;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,10 +28,14 @@ public class InGameMenu : MonoBehaviour
     {
         if (player.inMenu)
         {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
             player.inMenu = false;
         }
         else
         {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
             player.inMenu = true;
         }
         if (camera.inMenu)
@@ -50,6 +54,7 @@ public class InGameMenu : MonoBehaviour
         {
             canvas.gameObject.SetActive(true);
         }
+
 
         
     }
