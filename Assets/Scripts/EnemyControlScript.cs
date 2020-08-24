@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -10,6 +11,9 @@ public class EnemyControlScript : MonoBehaviour
     private NavMeshAgent agent;
     private bool active = false;
     public Player player;
+    private float timer = 0f;
+    public Canvas gameOver;
+    private float timeToKill;
 
     public Vector3 firstWayPoint;
     // Start is called before the first frame update
@@ -21,7 +25,8 @@ public class EnemyControlScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(this.transform.position == firstWayPoint)
+        timer += Time.deltaTime;
+        if (this.transform.position == firstWayPoint && !active)
         {
             active = true;
             moveSpeed /= 2;
@@ -29,6 +34,21 @@ public class EnemyControlScript : MonoBehaviour
         if (active)
         {
             agent.SetDestination(player.transform.position);
+        }
+
+        if (Vector3.Distance(this.gameObject.transform.position, player.transform.position) < 15)
+        {
+            if (timeToKill == 0)
+            {
+                timeToKill = timer + 5;
+            }
+            this.gameObject.transform.position = (player.transform.position + (player.transform.forward * 5));
+            if (timeToKill < timer)
+            {
+                gameOver.gameObject.SetActive(true);
+                player.GetComponent<PlayerMovement>().enabled = false;
+                player.GetComponentInChildren<CameraControl>().enabled = false;
+            }
         }
     }
     public void Activation()
