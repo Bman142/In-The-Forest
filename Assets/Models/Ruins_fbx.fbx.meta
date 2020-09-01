@@ -3,7 +3,57 @@ guid: 96faa51676d17fc4fa2528f3dfae24a2
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Buss
+    second: {fileID: 2100000, guid: 1c08f7ffce8bded43a5a746c03c52830, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Grass
+    second: {fileID: 2100000, guid: 3ee1708a65bdb24479ef6687be285f50, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ruin1
+    second: {fileID: 2100000, guid: aaa3f3666567c5f4bb9d9756f4518aa4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ruin2
+    second: {fileID: 2100000, guid: a9d9b9f60c3df664da4a0d5565f96d67, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ruin3
+    second: {fileID: 2100000, guid: 98ef963cb9778af499907237e8a22202, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ruin4
+    second: {fileID: 2100000, guid: 2abb6eb6cfd98ac44bddd260f0388a8d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TrckGR
+    second: {fileID: 2100000, guid: 62c0bec50691db849932549ff332aa8e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Truck
+    second: {fileID: 2100000, guid: 01a6b620182aaeb4aaf864cbec8ad23b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Water-tank
+    second: {fileID: 2100000, guid: afe89a4f366677d4da85cbe6ce91f855, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: oil-truck
+    second: {fileID: 2100000, guid: 566d06fcb42c9b44295d461956e96479, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0

@@ -55,4 +55,8 @@ public class EnemyControlScript : MonoBehaviour
     {
         agent.SetDestination(firstWayPoint);
     }
+    public void Deactivate()
+    {
+        active = false;
+    }
 }
